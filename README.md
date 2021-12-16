@@ -24,7 +24,7 @@
 
 - Mentor: 박천성, 강인욱
 - PL(Project Leader): 원요한
-- Mentee: 이준오 PM, 경규창, 김동현, 류형호, 최수빈, 김지수
+- Mentee: 이준오 PM, [경규창](https://github.com/l3u9), [김동현](https://github.com/jjanguu), [류형호](https://github.com/Ryuuuuu), [최수빈](https://github.com/dubini0), 김지수
 
 ## 카테고리 <!-- omit in toc -->
 
