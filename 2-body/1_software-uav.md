@@ -78,26 +78,26 @@ MAVLink란 'Micro Air Vehicle Link'의 약어이며 소형 무인기와의 통�
 
 * Packet start marker (STX): 새 패킷 및 프로토콜 버전의 시작
 * Payload length (LEN): 페이로드 길이
-* Incompatibility Flags: 패킷을 처리할 수 있도록 지원해야 하는 기능을 나타내는데 사용
-* Compatibility Flags: MAVLink 라이브러리가 기능을 이해하지 못하더라도 패킷을 처리하는 것을 방해하지 않음을 나타내는 데 사용
-* Packet Sequence (SEQ): sequence로 패킷 손실 탐지
+* Incompatibility Flags: 호환 플래그이고 보통 0x00으로 세팅된다. 그리고 알수 없는 플래그일 경우 패킷을 버린다
+* Compatibility Flags: 비호환 플래그이고 보통 0x00으로 세팅된다. 그리고 알수 없는 플래그일 경우에도 수용한다.
+* Packet Sequence (SEQ): 패킷 sequence
 * SYSTEM_ID (SYS): 여러 플랫폼이 동일한 네트워크 사용 가능하게 ID 부여
 * Component ID (COMP): 한 플랫폼에서 여러 component 받게 ID 부여
 * Message ID (MSG): 전송되는 메시지를 식별. 페이로드 및 디코딩 방법을 정의
 * DATA (PAYLOAD): 실제 전송되는 data값
-* Checksum: 오류 검출을 위한 checksum 데이터
+* Checksum: 오류 검출을 위한 checksum 데이터 (Crcc16Mcrf4xx 사용)
 * Signature: 무결성 검증을 위한 signature
 
 **v2와 v1의 차이점**
 
-* 24bit 메시지 ID - 1600만 개 이상의 고유한 메시지 정의 허용(MAVLink 1은 256개로 제한됨)
+* V2의 MSG_ID의 크기는 3Byte이고 V1은 1Byte이다. - 1600만 개 이상의 고유한 메시지 정의 허용(MAVLink 1은 256개로 제한됨)
 * 패킷의 무결성을 검증하는 SIGNATURE 값이 추가됨
   * 하지만 PX4 에서는 SIGNATURE를 검증하는 과정이 없다. (무결성 검증을 안한다.)
 
 #### 1.2.2. uORB API
 
 uORB란 Micro Object Request Broker의 줄임말로 비동기식 메시징 IPC 통신 기법 중 하나이다.   
-Publish-Subscribe 모델로 작동한다.   
+Publish-Subscribe 과정으로 통신이 이루어진다.   
 
 
 
@@ -106,7 +106,7 @@ Publish-Subscribe 모델로 작동한다.
 * Topic : 두 Node간 교환하는 정보의 단위.
 * Publish : 하나의 Topic에 대해서 공유하는 과정.
 * Subscribe : 하나의 Topic에 대해서 요청하는 과정.
-* Advertise : 처음 Publish할 때 Master Node에게 부탁하게 되는데, 이 과정을 Advertising 이라고 함.
+* Advertise : 처음 Publish할 때 통신할 uORB 데이터 리스트들을 Master Node를 통해 가져오게 되는데, 이 과정을 Advertising 이라고 함.
 
 ```예) MAVLink의 msgID에 따른 PAYLOAD의 값을 연산하고 Publish를 하여 Topics에 올리고 모듈은 Topics에 publish된 값을 Subscribe를 하여 uORB 값을 업데이트 한다.```
 
@@ -171,7 +171,7 @@ start a bash session
 $ ./Tools/docker_run.sh 'bash'
 ```
 
-우리는 퍼징을 위해 미리 만들어둔 도커 파일을 제공하려 하고 있다.   
+우리는 퍼징을 위해 미리 만들어둔 도커 파일을 제공하고 있다.   
 자세한 정보는 [이곳](../README.md) 참조
 
 ### 1.4. DFD
@@ -199,7 +199,7 @@ $ ./Tools/docker_run.sh 'bash'
 
 #### 1.5.1. 퍼저 개발
 
-PX4 소스코드 오디팅 등 분석을 하면서 퍼저를 발전시켰고, 뮤테이션 시키는 범위를 늘리거나 프로토콜에 맞게 퍼징을 하도록 했다.   
+PX4 소스코드 오디팅 등 분석을 하면서 Fuzzer를 발전시켰고, Mutation 시키는 범위를 늘리거나 Protocol 구조에 맞게 퍼징을 하도록 했다.   
 
 이런 방식으로 업그레이드 됨에 따라 추가적인 취약점이 발견됐다.   
 
@@ -355,7 +355,7 @@ MAVLink Protocol을 처리하는 함수를 찾기 위해 소스코드 오디팅�
 시뮬레이터 퍼징에서 나왔던 취약점을 테스트 하려면 실제 기기를 이용해야 했다.
 이를 이용하면 실제 기기에서 작동되는지 확인할 수 있다.
 통신 속도는 USB 연결 시 115,000로 설정해서 진행하면 된다.
-UDP와 시리얼의 통신 속도를 비교한 결과 평균적으로 약 4초 가의 차이로 UDP가 더 빠른걸 확인했다.
+UDP와 시리얼의 통신 속도를 비교한 결과 평균적으로 약 4초 차이로 UDP가 더 빠른걸 확인했다.
 
 **사용 방법**
 
@@ -370,7 +370,7 @@ $ docker pull ashinedo/4-drone:PX4-1.0
 $ docker run -it --rm ashinedo/4-drone:PX4-1.0
 ```
 
-만약 자동으로 퍼저가 실행되지 않기를 바란다면 bash 옵션을 통해 직접 명령어를 입력할 수 있다.
+만약 자동으로 퍼저가 실행되지 않기를 원하면 bash 옵션을 통해 직접 명령어를 입력할 수 있다.
 ```
 $ docker run -it --rm ashinedo/4-drone:PX4-1.0 bash
 ```
