@@ -138,4 +138,3 @@
 
 ### 결과 <!-- omit in toc -->
    1. [프로젝트 성과](/3-conclusion/result.md)
-   2. [프로젝트 후기](/3-conclusion/conclusion.md)
