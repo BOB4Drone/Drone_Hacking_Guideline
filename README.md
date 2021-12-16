@@ -1,21 +1,22 @@
 # Drone-Hacking-Guideline
 
-- - -
-
-KITRI BoB 10기 취약점 분석 Track : 프로젝트 '드론에 대한 취약성 연구'
+**KITRI BoB 10기 취약점 분석 Track : 프로젝트 '드론에 대한 취약성 연구'**
 
 > 연구 기간: 2021년 9월 ~ 2021년 12월(약 4개월)
 
-본 프로젝트는 KITRI BoB(Best of the Best) 10기에서 진행한 프로젝트로, 4개월동안 드론에 대한 취약성 연구를 진행한 내용을 기록하였음.
-우리 팀이 분석한 결과를 공유하고, 새롭게 드론 해킹에 입문하는 분들에게 진입장벽을 낮추고자 기록한 내용을 공개함.
+본 프로젝트는 KITRI BoB(Best of the Best) 10기에서 진행한 프로젝트로, 3개월동안 드론에 대한 취약성 연구를 진행한 내용을 기록하였습니다. 
 
-시장 점유율이 높은 드론 소프트웨어를 대상으로 취약점 분석 실험을 했고, 이를 통해 유의미한 취약점들을 식별했음.
-또한 해당 내용을 신속하게 조치할 수 있도록 제보하여 해당 이슈에 대한 패치 작업을 완료함.
+저희 팀이 3개월동안 분석한 결과를 공유하고, 새롭게 드론 해킹에 입문하는 분들에게 진입장벽을 낮추고자 합니다.
 
-※ 4DFUZZER[(PublicRepository)](https://github.com/BOB4Drone/4D-Fuzzer)
+시장 점유율이 높은 드론 소프트웨어를 대상으로 취약점 분석 실험을 했고, 이를 통해 유의미한 취약점들을 식별했습니다.
+또한 해당 내용을 신속하게 조치할 수 있도록 제보하여 해당 이슈에 대한 패치 작업을 완료하였습니다.
+
+※ 4DFUZZER [(PublicRepository Link)](https://github.com/BOB4Drone/4D-Fuzzer)
 
 ※ English documents are [here](https://github.com/estrogenic/bob-4-drone/blob/master/Github-Flavored%20Markdown.md)
 
+
+---
 
 ### 저자
 
