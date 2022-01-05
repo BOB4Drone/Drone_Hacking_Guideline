@@ -24,19 +24,19 @@
 
 ### 1. Issue Commits
 
-| No. | 취약점  | 링크  | CVE 넘버 |
-|---|---|---|---|
-| 1 | [PX4] Bug Found in msgID #332 mavlink protocol BOF  | https://github.com/PX4/PX4-Autopilot/issues/18369  | |
-| 2 | [PX4] Bug Found in msgID #147 mavlink protocol OOB | https://github.com/PX4/PX4-Autopilot/issues/18385  | |
-| 3 | [PX4] A Bug in MAV_CMD_LOGGING_START (msgID #76 - command 2510) |  https://github.com/PX4/PX4-Autopilot/issues/18580 | |
-| 4 | [QGC] Bug Found in msgID #126 mavlink protocol OOB read  | https://github.com/mavlink/qgroundcontrol/issues/10020  | CVE-2021-44107 |
-| 5 | [PX4] loop of mavftp protocol crash drone |  https://github.com/PX4/PX4-Autopilot/issues/18651 | |
-| 6 | [QGC] oob read occurs in the handler function handling msgid 0x10a, 0x10b  |  https://github.com/mavlink/qgroundcontrol/issues/10037 | CVE-2021-44996 |
+| No. | 취약점  | 링크  |
+|---|---|---|
+| 1 | [PX4] Bug Found in msgID #332 mavlink protocol BOF  | https://github.com/PX4/PX4-Autopilot/issues/18369  |
+| 2 | [PX4] Bug Found in msgID #147 mavlink protocol OOB | https://github.com/PX4/PX4-Autopilot/issues/18385  |
+| 3 | [PX4] A Bug in MAV_CMD_LOGGING_START (msgID #76 - command 2510) |  https://github.com/PX4/PX4-Autopilot/issues/18580 |
+| 4 | [QGC] Bug Found in msgID #126 mavlink protocol OOB read  | https://github.com/mavlink/qgroundcontrol/issues/10020  | 
+| 5 | [PX4] loop of mavftp protocol crash drone |  https://github.com/PX4/PX4-Autopilot/issues/18651 |
+| 6 | [QGC] oob read occurs in the handler function handling msgid 0x10a, 0x10b  |  https://github.com/mavlink/qgroundcontrol/issues/10037 |
 | 7 | [QGC] Found a bug in the QGC Airmap function |  https://github.com/mavlink/qgroundcontrol/issues/10035 | CVE-2021-44999 |
-| 8 | [MAVROS] BOF occurs in the handler function handling msgid 192 |  https://github.com/mavlink/mavros/issues/1668 | CVE-2021-45001 |
-| 9 | [MAVROS] BOF occurs in the handler function handling msgid 332 |  https://github.com/mavlink/mavros/issues/1666 | CVE-2021-45002 |
+| 8 | [MAVROS] BOF occurs in the handler function handling msgid 192 |  https://github.com/mavlink/mavros/issues/1668 |
+| 9 | [MAVROS] BOF occurs in the handler function handling msgid 332 |  https://github.com/mavlink/mavros/issues/1666 |
 | 10 | [QGC] OOB READ in mavlink console |  https://github.com/mavlink/qgroundcontrol/issues/10059 | CVE-2021-45000 |
-| 11 | [QGC] use after free occurs in GeoTag Images menu |  https://github.com/mavlink/qgroundcontrol/issues/10068 | |
+| 11 | [QGC] use after free occurs in GeoTag Images menu |  https://github.com/mavlink/qgroundcontrol/issues/10068 |
 ---
 
 ## 2. 취약점 제보
